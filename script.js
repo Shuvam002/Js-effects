@@ -30,7 +30,7 @@ class Cell {
         
     }
     draw(context) {
-        context.drawImage(this.image, this.x + this.sildeX, this.y + this.slideY, this.width, this.height, this.x, this.y/*change these two this.x and this.y to positionX and positionY*/, this.width, this.height);
+        context.drawImage(this.image, this.x + this.sildeX, this.y + this.slideY, this.width, this.height, this.x, this.y/*change these two this.x and this.y to positionX and positionY for emerging effect*/, this.width, this.height);
         // context.strokeRect(this.positionX,this.positionY,this.width,this.height);
     }
     start() {
