@@ -5,7 +5,7 @@ canvas.height = 700;
 
 
 class Cell {
-    constructor(effect, x, y,index) {
+    constructor(effect, x, y, index) {
         this.effect = effect;
         this.x = x;
         this.y = y;
@@ -24,10 +24,10 @@ class Cell {
         this.ease = 0.1;
         this.friction = 0.8;
         this.randomize = Math.random() * 50 + 2;
-        setTimeout(()=>{
+        setTimeout(() => {
             this.start();
-        },this.index*10);
-        
+        }, this.index * 10);
+
     }
     draw(context) {
         context.drawImage(this.image, this.x + this.sildeX, this.y + this.slideY, this.width, this.height, this.x, this.y/*change these two this.x and this.y to positionX and positionY for emerging effect*/, this.width, this.height);
@@ -56,7 +56,7 @@ class Cell {
         const distance = Math.hypot(dx, dy);
         if (distance < this.effect.mouse.radius) {
             const angle = Math.atan2(dy, dx);
-            const force =10* distance / this.effect.mouse.radius;
+            const force = 10 * distance / this.effect.mouse.radius;
             //swap sin and cos for alternate effect
             this.vx = force * Math.sin(angle);
             this.vy = force * Math.cos(angle);
@@ -90,6 +90,15 @@ class Effect {
             this.mouse.y = e.offsetY;
         })
         this.canvas.addEventListener('mouseleave', () => {
+            this.mouse.x = undefined;
+            this.mouse.y = undefined;
+        })
+        this.canvas.addEventListener('touchmove', e => {
+            let touch = e.touches[0];
+            this.mouse.x = touch.clientX;
+            this.mouse.y = touch.clientY;
+        })
+        this.canvas.addEventListener('touchend', () => {
             this.mouse.x = undefined;
             this.mouse.y = undefined;
         })
