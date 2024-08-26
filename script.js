@@ -38,8 +38,8 @@ class Cell {
         this.speedY = (this.y - this.positionY) / this.randomize;
     }
     update() {
-        // this.sildeX=Math.random()*10; //these two are for glitch effect
-        // this.slideY=Math.random()*10;
+        this.sildeX=Math.random()*10; //these two are for glitch effect
+        this.slideY=Math.random()*10;
         if (Math.abs(this.speedX) > 0.001 || Math.abs(this.speedY) > 0.001) {
             this.speedX = (this.x - this.positionX) / this.randomize;
             this.speedY = (this.y - this.positionY) / this.randomize;
